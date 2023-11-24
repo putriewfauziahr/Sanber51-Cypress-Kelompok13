@@ -32,3 +32,18 @@ Cypress.Commands.add("verifyContain", (locator, value) => {
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// <<<<<<< HEAD
+// =======
+//Fixtures and Custom Commands
+Cypress.Commands.add('login', () => {
+    cy.fixture('../fixtures/example.json').then((data) => {
+      cy.visit('/');        
+      cy.get('.home-main > .content > .title').should('contain','Get fit and look fab in new seasonal styles')
+      cy.wait(2000);
+      cy.get('.panel>.header>.authorization-link>a').click();
+      cy.get('#email').type(data.putriemail);
+      cy.get('#pass').type(data.putripass);
+      cy.get('#send2').click();
+    })
+    });
+// >>>>>>> 0ec6f3301f8615f2402c8182f9d4f2717c69afba
