@@ -23,6 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+//Fixtures and Custom Commands
 Cypress.Commands.add('login', () => {
     cy.fixture('../fixtures/example.json').then((data) => {
       cy.visit('/');        

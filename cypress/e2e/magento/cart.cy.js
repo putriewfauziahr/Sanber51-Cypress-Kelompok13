@@ -4,7 +4,7 @@ import '../../support/commands';
 
 describe('View, Update and Delete Cart', () => {
     it('Succes Login, Add Product to Cart, View Cart, Update Size and Color and Delete Product', () => {
-        
+        //Login and Add Product to Cart
         cy.login();
         ViewCart.clickProduct();
         ViewCart.clickSize();
@@ -24,6 +24,8 @@ describe('View, Update and Delete Cart', () => {
         cy.get('#product-updatecart-button').click();
         cy.wait(2000);
         cy.get('.message-success > div').should('contain','Radiant Tee was updated in your shopping cart.');
+
+        //Delete Product
         cy.wait(3000);
         cy.get('.action-delete').click();
         cy.wait(1000);
