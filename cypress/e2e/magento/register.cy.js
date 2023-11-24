@@ -8,7 +8,7 @@ const fakeEmail = `${firstName}@mailinator.com`;
 const password = faker.internet.password();
 const fullname = `${firstName} ${lastName}`
 
-describe('template spec', () => {
+describe('Register Feature', () => {
      it('Register Success Using Valid Data', () => {
      cy.visit('https://magento.softwaretestingboard.com/')
      cy.wait(1000)
@@ -25,6 +25,7 @@ describe('template spec', () => {
      cy.get('#password-confirmation').type(password)
      cy.wait(2000)
      cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
+     cy.get('#maincontent > div.page.messages > div:nth-child(2) > div > div > div').should('contain','Thank you for registering with Main Website Store.')
    })
   it('Register Failed Using Already Data', () => {
     cy.visit('https://magento.softwaretestingboard.com/')
@@ -43,7 +44,7 @@ describe('template spec', () => {
     cy.wait(2000)
     cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
     cy.wait(2000)
-    cy.get('.message-error').contains('There is already an account with this email address. If you are sure that it is your email address, click here to get your password and access your account.')
+    cy.get('.message-error').should('contain','There is already an account with this email address. If you are sure that it is your email address, click here to get your password and access your account.')
     cy.wait(2000)
   })
   it('Register Failed with Empty Fisrtname', () => {
@@ -61,7 +62,7 @@ describe('template spec', () => {
     cy.wait(2000)
     cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
     cy.wait(2000)
-    cy.get('#firstname-error').contains('This is a required field.')
+    cy.get('#firstname-error').should('contain','This is a required field.')
   })
   it('Register Failed with Empty Lastname', () => {
     cy.visit('https://magento.softwaretestingboard.com/')
@@ -78,7 +79,7 @@ describe('template spec', () => {
     cy.wait(2000)
     cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
     cy.wait(2000)
-    cy.get('#lastname-error').contains('This is a required field.')
+    cy.get('#lastname-error').should('contain','This is a required field.')
   })
   it('Register Failed with Empty Email Address', () => {
     cy.visit('https://magento.softwaretestingboard.com/')
@@ -95,7 +96,7 @@ describe('template spec', () => {
     cy.wait(2000)
     cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
     cy.wait(2000)
-    cy.get('#email_address-error').contains('This is a required field.')
+    cy.get('#email_address-error').should('contain','This is a required field.')
   })
   it('Register Failed with Empty Password', () => {
     cy.visit('https://magento.softwaretestingboard.com/')
@@ -112,7 +113,7 @@ describe('template spec', () => {
     cy.wait(2000)
     cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
     cy.wait(2000)
-    cy.get('#password-error').contains('This is a required field.')
+    cy.get('#password-error').should('contain','This is a required field.')
   })
   it('Register Failed with Empty Confirm Password', () => {
     cy.visit('https://magento.softwaretestingboard.com/')
@@ -129,7 +130,7 @@ describe('template spec', () => {
     cy.wait(2000)
     cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
     cy.wait(2000)
-    cy.get('#password-confirmation-error').contains('This is a required field.')
+    cy.get('#password-confirmation-error').should('contain','This is a required field.')
   })
   it('Register Failed with Empty All Field', () => {
     cy.visit('https://magento.softwaretestingboard.com/')
@@ -142,6 +143,6 @@ describe('template spec', () => {
     cy.get('#lastname-error').contains('This is a required field.')
     cy.get('#email_address-error').contains('This is a required field.')
     cy.get('#password-error').contains('This is a required field.')
-    cy.get('#password-confirmation-error').contains('This is a required field.')
+    cy.get('#password-confirmation-error').should('contain','This is a required field.')
   })
 })
