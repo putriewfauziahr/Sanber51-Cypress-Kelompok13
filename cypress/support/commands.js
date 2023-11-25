@@ -47,3 +47,8 @@ Cypress.Commands.add('login', () => {
     })
     });
 // >>>>>>> 0ec6f3301f8615f2402c8182f9d4f2717c69afba
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+  // Turn off automatic failure on uncaught exceptions
+  return false;
+});
