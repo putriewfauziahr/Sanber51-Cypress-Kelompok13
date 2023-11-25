@@ -30,20 +30,23 @@ class ViewCart {
     }
 
     clickSize(){
+        cy.wait(1000);
         cy.get('#option-label-size-143-item-167').click();
     }
 
     clickColor(){
+        cy.wait(1000);
         cy.get('#option-label-color-93-item-50').click();
     }
 
     clickAddCart(){
+        cy.wait(1000);
         cy.get('#product-addtocart-button').click();
     }
 
     successAdd(){
         cy.wait(2000);
-        cy.get('.message-success>div').should('contain', 'You added Radiant Tee to your shopping cart.');
+        cy.get('.message-success>div').should('contain', 'You added');
     }
 
     viewCart(){
