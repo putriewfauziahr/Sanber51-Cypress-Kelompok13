@@ -23,3 +23,15 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+//Fixtures and Custom Commands
+Cypress.Commands.add('login', () => {
+    cy.fixture('../fixtures/example.json').then((data) => {
+      cy.visit('/');        
+      cy.get('.home-main > .content > .title').should('contain','Get fit and look fab in new seasonal styles')
+      cy.wait(2000);
+      cy.get('.panel>.header>.authorization-link>a').click();
+      cy.get('#email').type(data.putriemail);
+      cy.get('#pass').type(data.putripass);
+      cy.get('#send2').click();
+    })
+    });
