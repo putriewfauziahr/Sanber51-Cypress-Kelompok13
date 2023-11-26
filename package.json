@@ -1,7 +1,17 @@
 {
+  "name": "sanber51-cypress-kelompok13",
+  "version": "1.0.0",
+  "description": "Irfan : Register Feature\r Putri : View and Update Shopping Cart",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
     "@cypress/xpath": "^2.0.3",
     "@faker-js/faker": "^8.3.1",
-    "cypress": "^13.5.1"
+    "cypress": "^13.6.0"
   }
 }

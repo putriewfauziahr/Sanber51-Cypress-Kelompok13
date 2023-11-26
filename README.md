@@ -2,3 +2,4 @@
 
 Irfan : Register Feature
 Putri : View and Update Shopping Cart
+Angel : Choose Product(s)
