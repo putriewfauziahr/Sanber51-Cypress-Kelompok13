@@ -3,3 +3,5 @@
 Irfan : Register Feature
 Putri : View and Update Shopping Cart
 Angel : Choose Product(s)
+Pasha : Login
+Adit : Checkout
