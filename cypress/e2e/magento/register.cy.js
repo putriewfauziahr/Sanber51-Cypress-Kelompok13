@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker"
+import registerPage from "../../support/pageObject/registerPage";
 
 const email = "joko@mailinator.com"
 const pwd = "@Joko123"
@@ -9,42 +10,43 @@ const password = faker.internet.password();
 const fullname = `${firstName} ${lastName}`
 
 describe('Register Feature', () => {
-     it('Register Success Using Valid Data', () => {
-     cy.visit('https://magento.softwaretestingboard.com/')
+    it('Register Success Using Valid Data', () => {
+     cy.visit('')
      cy.wait(1000)
-     cy.get('.panel > .header > :nth-child(3) > a').click()
+     registerPage.clickRegister();
      cy.wait(2000)
-     cy.get('#firstname').type(firstName)
+     registerPage.firstname();
      cy.wait(2000)
-     cy.get('#lastname').type(lastName)
+     registerPage.lastname();
      cy.wait(2000)
-     cy.get('#email_address').type(fakeEmail)
+     registerPage.email();
      cy.wait(2000)
-     cy.get('#password').type(password)
+     registerPage.pwd();
      cy.wait(2000)
-     cy.get('#password-confirmation').type(password)
+     registerPage.confirmPwd();
      cy.wait(2000)
-     cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
-     cy.get('#maincontent > div.page.messages > div:nth-child(2) > div > div > div').should('contain','Thank you for registering with Main Website Store.')
+     registerPage.clickCreateAccount();
+     cy.wait(5000)
+     registerPage.msgSuccessRegister();
    })
   it('Register Failed Using Already Data', () => {
-    cy.visit('https://magento.softwaretestingboard.com/')
+    cy.visit('')
     cy.wait(1000)
-    cy.get('.panel > .header > :nth-child(3) > a').click()
+    registerPage.clickRegister();
     cy.wait(2000)
-    cy.get('#firstname').type(firstName)
+    registerPage.firstname();
     cy.wait(2000)
-    cy.get('#lastname').type(lastName)
+    registerPage.lastname();
     cy.wait(2000)
-    cy.get('#email_address').type(fakeEmail)
+    registerPage.email();
     cy.wait(2000)
-    cy.get('#password').type(password)
+    registerPage.pwd();
     cy.wait(2000)
-    cy.get('#password-confirmation').type(password)
+    registerPage.confirmPwd();
     cy.wait(2000)
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
-    cy.wait(2000)
-    cy.get('.message-error').should('contain','There is already an account with this email address. If you are sure that it is your email address, click here to get your password and access your account.')
+    registerPage.clickCreateAccount();
+    cy.wait(5000)
+    registerPage.msgErrorRegister_alreadyAccount();
     cy.wait(2000)
   })
   it('Register Failed with Empty Fisrtname', () => {
